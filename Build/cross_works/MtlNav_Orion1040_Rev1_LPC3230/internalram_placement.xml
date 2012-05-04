@@ -1,0 +1,27 @@
+<!DOCTYPE Linker_Placement_File>
+<Root name="IRAM Section Placement">
+  <MemorySegment name="NORFlash">
+    <ProgramSection start="0xE0400000" load="No" inputsections="*(.geoids)" name=".geoids"/>
+  </MemorySegment>
+  <MemorySegment name="IRAM">
+    <ProgramSection alignment="4" load="Yes" inputsections="*(.vectors .vectors.*)" name=".vectors"/>
+    <ProgramSection alignment="4" load="Yes" inputsections="*(.init .init.*)" name=".init"/>
+    <ProgramSection alignment="4" load="Yes" inputsections="*(.reset .reset.*)" name=".reset"/>
+    <ProgramSection alignment="0x4000" size="0x4800" load="No" name=".reserved_mmu" />
+    <ProgramSection alignment="4" load="Yes" inputsections="*(.fast .fast.*)" name=".fast"/>
+    <ProgramSection alignment="4" load="Yes" inputsections="*(.text .text.* .glue_7t .glue_7 .gnu.linkonce.t.* .gcc_except_table)" name=".text"/>
+    <ProgramSection alignment="4" load="Yes" inputsections="KEEP (*(SORT(.dtors.*))) KEEP (*(.dtors))" name=".dtors"/>
+    <ProgramSection alignment="4" load="Yes" inputsections="KEEP (*(SORT(.ctors.*))) KEEP (*(.ctors))" name=".ctors"/>
+    <ProgramSection alignment="4" load="Yes" inputsections="*(.data .data.* .gnu.linkonce.d.*)" name=".data"/>
+    <ProgramSection alignment="4" load="Yes" inputsections="*(.rodata .rodata.* .gnu.linkonce.r.*)" name=".rodata"/>
+    <ProgramSection alignment="4" load="No" inputsections="*(.bss .bss.* .gnu.linkonce.b.*) *(COMMON)" name=".bss"/>
+    <ProgramSection alignment="4" load="No" inputsections="*(.non_init .non_init.*)" name=".non_init"/>
+    <ProgramSection alignment="4" size="__HEAPSIZE__" load="No" name=".heap"/>
+    <ProgramSection alignment="4" size="__STACKSIZE__" load="No" name=".stack"/>
+    <ProgramSection alignment="4" size="__STACKSIZE_IRQ__" load="No" name=".stack_irq"/>
+    <ProgramSection alignment="4" size="__STACKSIZE_FIQ__" load="No" name=".stack_fiq"/>
+    <ProgramSection alignment="4" size="__STACKSIZE_SVC__" load="No" name=".stack_svc"/>
+    <ProgramSection alignment="4" size="__STACKSIZE_ABT__" load="No" name=".stack_abt"/>
+    <ProgramSection alignment="4" size="__STACKSIZE_UND__" load="No" name=".stack_und"/>
+  </MemorySegment>
+</Root>

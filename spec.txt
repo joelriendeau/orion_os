@@ -1,0 +1,32 @@
+Specification for OrionRTK's main board software
+------------------------------------------------
+Runs on Orion1040 Rev 1 board, over NXP's LPC3230 Arm processor.
+
+This software will act as the control point for all the devices making up a Base Station or Rover unit.
+It will provide, through a protocol running over BlueTooth, SerialPort or USB :
+ - real-time kinematics positioning data
+ - configurable parameters
+ - statistics and status of the system
+
+This software will run as many loops :
+ - The main communication loop, itself possibly launching lightweight threads for answering.
+   This part may be coded using a higher level language than C or C++, probably Lua
+ - The computing thread solving a RTK solution
+
+Two main configurations are planned, selectable through preprocessor definitions in the main files shared between the two :
+ - Base Station : No support for receiving and BlueTooth, only sends data through the radios save for debugging, limited usage for the IMU
+ - Rover : Support for everything
+
+Support for the following hardware :
+ - Flash memories, NAND and NOR
+ - DDR
+ - microSD
+ - Radios, long and shoft range
+ - PIC controller, for both power supply stats and RFID interrupts
+ - BlueTooth
+ - GPS board with timepulse
+ - IMU board
+ - USB
+ - SerialPort, debug and comm
+ - LEDs and buttons
+ - Temp sensors

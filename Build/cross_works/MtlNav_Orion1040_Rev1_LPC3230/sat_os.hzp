@@ -1,0 +1,330 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="orion_os" version="2">
+  <project Name="orion_os">
+    <configuration DebugHandler="None" Name="Common" Placement="NORFlash" Target="LPC3230" arm_architecture="v5TE" arm_core_type="ARM926EJ-S" arm_fp_abi="SoftFP" arm_fpu_type="VFP9" arm_interwork="Yes" arm_linker_abt_stack_size="2048" arm_linker_heap_size="0" arm_linker_irq_stack_size="512" arm_linker_jtag_pad_post_dr="2" arm_linker_jtag_pad_post_ir="8" arm_linker_stack_size="2048" arm_linker_und_stack_size="2048" arm_simulator_memory_simulation_filename="$(TargetsDir)/LPC3200/LPC3200SimulatorMemory.dll" arm_simulator_memory_simulation_parameter="0x40000;$(EMC_DYCS0_SIZE::$(EMC_DYCS0_SIZE:0));$(EMC_DYCS1_SIZE::$(EMC_DYCS1_SIZE:0));$(EMC_CS0_SIZE::$(EMC_CS0_SIZE:0));$(EMC_CS1_SIZE::$(EMC_CS1_SIZE:0));$(EMC_CS2_SIZE::$(EMC_CS2_SIZE:0));$(EMC_CS3_SIZE::$(EMC_CS3_SIZE:0))" arm_target_debug_handler_load_address="_vectors+0x10" arm_target_debug_interface_type="ARM9TDI" arm_target_flash_loader_type="LIBMEM RPC Loader" arm_target_loader_applicable_loaders="NOR" arm_target_loader_default_loader="NOR" arm_target_monitor_mode_debug="No" arm_target_monitor_mode_memory="No" arm_target_use_debug_handler="No" build_treat_warnings_as_errors="Yes" c_additional_options="-Wall;-Werror" c_preprocessor_definitions="STARTUP_FROM_RESET;CTL_TASKING;PRESERVE_VFP_REGISTERS;CTL_PROFILING" c_preprocessor_undefinitions="" c_system_include_directories="$(StudioDir)/include;$(PackagesDir)/include" c_user_include_directories="$(ProjectDir)/../../../Source/modules/debug;$(StudioDir)/include/stlport;$(TargetsDir)/LPC3200;$(ProjectDir)/../../../Source/instrumented_ctl;$(ProjectDir)/../../../Source;$(ProjectDir)/../../../../../External/boost_1_42_0;$(ProjectDir)/../../../../../Libs;$(ProjectDir)/../../../Source/armtastic" cpp_enable_exceptions="No" cpp_enable_rtti="No" cpp_only_additional_options="-fno-threadsafe-statics;-fno-use-cxa-atexit" debug_startup_completion_point="main" link_use_multi_threaded_libraries="Yes" linker_additional_files="" linker_memory_map_file="$(TargetsDir)/LPC3200/LPC3230_MemoryMap.xml" linker_memory_map_macros="EMC_DYCS0_NAME=DDR;EMC_DYCS0_SIZE=0x04000000;EMC_CS0_NAME=NORFlash;EMC_CS0_SIZE=0x00800000;EMC_CS0_ACCESS=ReadOnly" linker_printf_fmt_level="long long" linker_printf_fp_enabled="Yes" linker_section_placement_file="$(ProjectDir)/nor_placement.xml" project_directory="" project_type="Executable" property_groups_file_path="$(ProjectDir)/propertyGroups.xml" target_reset_script="Reset()"/>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;hpp;s;asm;inc"/>
+      <folder Name="armtastic">
+        <file file_name="../../../Source/armtastic/register.hpp"/>
+        <file file_name="../../../Source/armtastic/types.hpp"/>
+        <file file_name="../../../Source/armtastic/static_singleton.hpp"/>
+        <file file_name="../../../Source/armtastic/ring_buffer.hpp"/>
+        <file file_name="../../../Source/armtastic/linear_buffer.hpp"/>
+        <file file_name="../../../Source/armtastic/list.hpp"/>
+        <file file_name="../../../Source/armtastic/pool.hpp"/>
+      </folder>
+      <folder Name="dev">
+        <file file_name="../../../Source/dev/uart_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/clock_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/interrupt_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/registers_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/registers_lpc3230.cpp"/>
+        <file file_name="../../../Source/dev/ddr_mt46h32m16lfbf_6.hpp"/>
+        <file file_name="../../../Source/dev/emc_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/timer_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/clock_lpc3230.cpp"/>
+        <file file_name="../../../Source/dev/emc_lpc3230.cpp"/>
+        <file file_name="../../../Source/dev/timer_lpc3230.cpp"/>
+        <file file_name="../../../Source/dev/spi_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/sd_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/dma_lpc3230.hpp"/>
+        <file file_name="../../../Source/dev/cp15_arm926ejs.hpp"/>
+        <file file_name="../../../Source/dev/uart_client.hpp"/>
+        <file file_name="../../../Source/dev/uart_lpc3230.cpp"/>
+        <file file_name="../../../Source/dev/timer_client.hpp"/>
+        <file file_name="../../../Source/dev/mmu_arm926ejs.hpp"/>
+        <file file_name="../../../Source/dev/mmu_arm926ejs.cpp"/>
+        <file file_name="../../../Source/dev/io_orion1040.hpp"/>
+      </folder>
+      <folder Name="modules">
+        <folder Name="uart">
+          <file file_name="../../../Source/modules/uart/uart_ctrl.hpp"/>
+          <file file_name="../../../Source/modules/uart/uart_logger.hpp"/>
+          <file file_name="../../../Source/modules/uart/uart_ctrl_9xtend.hpp"/>
+        </folder>
+        <folder Name="bluetooth">
+          <file file_name="../../../Source/modules/bluetooth/hci.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/stack.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/csr.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/h4.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/l2cap.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/rfcomm.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/hci_declares.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/hci_acl.hpp"/>
+          <file file_name="../../../Source/modules/bluetooth/l2cap_declares.hpp"/>
+        </folder>
+        <folder Name="debug">
+          <file file_name="../../../Source/modules/debug/debug_io.cpp"/>
+          <file file_name="../../../Source/modules/debug/debug_io.hpp"/>
+          <file file_name="../../../Source/modules/debug/assert.h"/>
+        </folder>
+        <folder Name="init">
+          <file file_name="../../../Source/modules/init/init.cpp"/>
+          <file file_name="../../../Source/modules/init/main.cpp"/>
+          <file file_name="../../../Source/modules/init/project.hpp"/>
+          <file file_name="../../../Source/modules/init/startup.s"/>
+          <file file_name="../../../Source/modules/init/globals.cpp"/>
+          <file file_name="../../../Source/modules/init/globals.hpp"/>
+          <file file_name="../../../Source/modules/init/fwd_decl.hpp"/>
+          <file file_name="../../../Source/modules/init/abort_handlers.s"/>
+          <file file_name="../../../Source/modules/init/settings.hpp"/>
+          <file file_name="../../../Source/modules/init/revision.hpp"/>
+          <file file_name="../../../Source/modules/init/revision.cpp"/>
+          <file file_name="../../../Source/modules/init/abort_handler_buffer.cpp">
+            <configuration Name="Common" c_additional_options="-fno-strict-aliasing"/>
+          </file>
+          <file file_name="../../../Source/modules/init/abort_handlers.h"/>
+          <file file_name="../../../Source/modules/init/abort_handler_buffer.hpp"/>
+          <file file_name="../../../Source/modules/init/settings_base.hpp"/>
+          <file file_name="../../../Source/modules/init/settings_rover.hpp"/>
+          <file file_name="../../../Source/modules/init/settings_check.hpp"/>
+          <file file_name="../../../Source/modules/init/settings_test.hpp"/>
+        </folder>
+        <folder Name="aux_ctrl">
+          <file file_name="../../../Source/modules/aux_ctrl/aux_ctrl.hpp"/>
+        </folder>
+        <folder Name="async">
+          <file file_name="../../../Source/modules/async/message_queue.hpp"/>
+          <file file_name="../../../Source/modules/async/messages.hpp"/>
+          <file file_name="../../../Source/modules/async/multi_blocking_queues.hpp"/>
+        </folder>
+        <folder Name="file_system">
+          <folder Name="fat">
+            <file file_name="../../../Source/modules/file_system/fat/dosfs.cpp"/>
+            <file file_name="../../../Source/modules/file_system/fat/dosfs.hpp"/>
+          </folder>
+          <file file_name="../../../Source/modules/file_system/file_system.hpp"/>
+          <file file_name="../../../Source/modules/file_system/file_system.cpp"/>
+          <file file_name="../../../Source/modules/file_system/file_system_queue.hpp"/>
+        </folder>
+        <folder Name="profiling">
+          <file file_name="../../../Source/modules/profiling/profiler.hpp"/>
+          <file file_name="../../../Source/modules/profiling/profiler_c.cpp"/>
+          <file file_name="../../../Source/modules/profiling/profiler_c.h"/>
+          <file file_name="../../../Source/modules/profiling/tracer.hpp"/>
+          <file file_name="../../../Source/modules/profiling/tracer.cpp"/>
+        </folder>
+        <folder Name="gps">
+          <file file_name="../../../Source/modules/gps/dump_funcs.hpp"/>
+          <file file_name="../../../Source/modules/gps/rover_pda_link.hpp"/>
+          <file file_name="../../../Source/modules/gps/gps_processor.hpp"/>
+        </folder>
+        <folder Name="console">
+          <file file_name="../../../Source/modules/console/console.cpp"/>
+          <file file_name="../../../Source/modules/console/console.hpp"/>
+        </folder>
+        <folder Name="clock">
+          <file file_name="../../../Source/modules/clock/hf_clock.cpp"/>
+          <file file_name="../../../Source/modules/clock/rt_clock.hpp"/>
+        </folder>
+        <folder Name="sinks">
+          <file file_name="../../../Source/modules/sinks/sinks.hpp"/>
+        </folder>
+        <folder Name="time_queue">
+          <file file_name="../../../Source/modules/time_queue/time_queue.hpp"/>
+        </folder>
+      </folder>
+      <folder Name="simulator">
+        <file file_name="../../../Source/simulator/rover_simulator.hpp"/>
+        <file file_name="../../../Source/simulator/multitask_simulator.hpp"/>
+        <file file_name="../../../Source/simulator/multitask_simulator.cpp"/>
+        <file file_name="../../../Source/simulator/gps_benchmark.hpp"/>
+        <file file_name="../../../Source/simulator/math_benchmark.hpp"/>
+        <file file_name="../../../Source/simulator/sd_benchmark.hpp"/>
+      </folder>
+      <folder Name="instrumented_ctl">
+        <file file_name="../../../Source/instrumented_ctl/ctl.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl.h"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_api.h"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_arm.s"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_arm_int.s"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_board.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_bq.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_evt.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_impl.h"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_libc.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_mem_blk.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_mq.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_mutex.c"/>
+        <file file_name="../../../Source/instrumented_ctl/ctl_sem.c"/>
+      </folder>
+      <folder Name="shared_libs">
+        <folder Name="rfcom">
+          <file file_name="../../../../../Libs/RFCom/hrfcom.cpp"/>
+          <file file_name="../../../../../Libs/RFCom/hrfcom.hpp"/>
+          <file file_name="../../../../../Libs/RFCom/rfcom.cpp"/>
+          <file file_name="../../../../../Libs/RFCom/rfcom.hpp"/>
+          <file file_name="../../../../../Libs/RFCom/msg_handler.hpp"/>
+        </folder>
+        <folder Name="gnsscom">
+          <file file_name="../../../../../Libs/GNSSCom/GNSSCom.cpp"/>
+          <file file_name="../../../../../Libs/GNSSCom/GNSSCom.hpp"/>
+          <file file_name="../../../../../Libs/GNSS/posaccuracy.cpp"/>
+          <file file_name="../../../../../Libs/GNSS/posaccuracy.hpp"/>
+        </folder>
+        <folder Name="gnss">
+          <file file_name="../../../../../Libs/GNSS/timedate.c"/>
+          <file file_name="../../../../../Libs/GNSS/timedate.h"/>
+          <file file_name="../../../../../Libs/GNSS/GPS_L1.c"/>
+          <file file_name="../../../../../Libs/GNSS/GPS_L1.h"/>
+          <file file_name="../../../../../Libs/GNSS/SBAS.c"/>
+          <file file_name="../../../../../Libs/GNSS/SBAS.h"/>
+          <file file_name="../../../../../Libs/GNSS/navpak.c"/>
+          <file file_name="../../../../../Libs/GNSS/navpak.h"/>
+          <file file_name="../../../../../Libs/GNSS/tropo_EGNOS.c"/>
+          <file file_name="../../../../../Libs/GNSS/tropo_EGNOS.h"/>
+          <file file_name="../../../../../Libs/GNSS/empirical.cpp"/>
+          <file file_name="../../../../../Libs/GNSS/empirical.hpp"/>
+          <file file_name="../../../../../Libs/GNSS/GPSLIB.c"/>
+          <file file_name="../../../../../Libs/GNSS/GPSLIB.h"/>
+          <file file_name="../../../../../Libs/GNSS/SBASLIB.c"/>
+          <file file_name="../../../../../Libs/GNSS/SBASLIB.h"/>
+          <file file_name="../../../../../Libs/GNSS/rtkpak.cpp"/>
+          <file file_name="../../../../../Libs/GNSS/rtkpak.hpp"/>
+          <file file_name="../../../../../Libs/GNSS/geoid_undul.hpp"/>
+        </folder>
+        <folder Name="base">
+          <file file_name="../../../../../Libs/Base/base.cpp"/>
+          <file file_name="../../../../../Libs/Base/base.hpp"/>
+          <file file_name="../../../../../Libs/Base/base_data.hpp"/>
+        </folder>
+        <folder Name="fp_math">
+          <file file_name="../../../../../Libs/FPMath/polyfit.c"/>
+          <file file_name="../../../../../Libs/FPMath/polyfit.h"/>
+          <file file_name="../../../../../Libs/FPMath/Kalman.hpp"/>
+          <file file_name="../../../../../Libs/FPMath/matrix_lib.c"/>
+          <file file_name="../../../../../Libs/FPMath/matrix_lib.h"/>
+          <file file_name="../../../../../Libs/FPMath/qerf.cpp"/>
+          <file file_name="../../../../../Libs/FPMath/qerf.hpp"/>
+        </folder>
+        <folder Name="rover">
+          <file file_name="../../../../../Libs/Rover/rover.cpp"/>
+          <file file_name="../../../../../Libs/Rover/rover.hpp"/>
+          <file file_name="../../../../../Libs/Rover/fixsol.hpp"/>
+          <file file_name="../../../../../Libs/Rover/prox_handler.cpp"/>
+          <file file_name="../../../../../Libs/Rover/prox_handler.hpp"/>
+          <file file_name="../../../../../Libs/Rover/slips_repair.hpp"/>
+        </folder>
+        <folder Name="dynamic_memory">
+          <file file_name="../../../../../Libs/DynamicMemory/dynamic_memory.cpp">
+            <configuration Name="Common" build_exclude_from_build="Yes"/>
+          </file>
+          <file file_name="../../../../../Libs/DynamicMemory/dynamic_memory.hpp"/>
+          <file file_name="../../../../../Libs/DynamicMemory/pool.hpp"/>
+        </folder>
+        <folder Name="settings">
+          <file file_name="../../../../../Libs/Settings/settings.hpp"/>
+        </folder>
+        <folder Name="protocols">
+          <file file_name="../../../../../Libs/Protocols/generic_protocol.hpp"/>
+          <folder Name="rover_pda">
+            <file file_name="../../../../../Libs/Protocols/rover_pda/rover_to_pda.hpp"/>
+          </folder>
+          <file file_name="../../../../../Libs/Protocols/universe.hpp"/>
+          <folder Name="onboard_logs">
+            <file file_name="../../../../../Libs/Protocols/onboard_logs/onboard_logs.hpp"/>
+          </folder>
+          <file file_name="../../../../../Libs/Protocols/generic_packet.hpp"/>
+        </folder>
+        <folder Name="ephemeris">
+          <file file_name="../../../../../Libs/Ephemeris/ephemeris_mgr.hpp"/>
+          <file file_name="../../../../../Libs/Ephemeris/ephemeris_mgr_dynamic.hpp"/>
+        </folder>
+        <folder Name="high_freq_clock">
+          <file file_name="../../../../../Libs/HighFreqClock/hf_clock.hpp"/>
+        </folder>
+        <folder Name="serial">
+          <file file_name="../../../../../Libs/Serial/uart.hpp"/>
+        </folder>
+        <folder Name="geoids">
+          <file file_name="../../../../../Libs/Geoids/egm96.cpp"/>
+          <file file_name="../../../../../Libs/Geoids/egm96.hpp"/>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="System Files">
+      <file file_name="crt0.s"/>
+      <file file_name="$(StudioDir)/source/ARMDIDebugHandler.s">
+        <configuration Name="Common" c_preprocessor_definitions="__TARGET_HAS_MMU__"/>
+      </file>
+      <file file_name="LPC3200.c"/>
+      <file file_name="LPC3200_irq_handler.s"/>
+      <file file_name="LPC3230.h"/>
+      <file file_name="LPC3200.h"/>
+      <file file_name="$(StudioDir)/ctl/source/threads.js"/>
+      <file file_name="orion_loader.js">
+        <configuration Name="Common" file_type="Reset Script"/>
+      </file>
+    </folder>
+  </project>
+  <configuration Name="ARM Rover Debug" inherited_configurations="ARM;Debug;Rover"/>
+  <configuration Name="ARM Base Debug" inherited_configurations="ARM;Debug;Base"/>
+  <configuration Name="ARM Rover Release" inherited_configurations="ARM;Release;Rover"/>
+  <configuration Name="ARM Base Release" inherited_configurations="ARM;Release;Base"/>
+  <configuration Name="ARM Test Debug" inherited_configurations="ARM;Debug;Test"/>
+  <configuration Name="ARM Test Release" inherited_configurations="ARM;Release;Test"/>
+  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug"/>
+  <configuration Name="THUMB Release" inherited_configurations="THUMB;Release"/>
+  <configuration Name="Base" c_preprocessor_definitions="BUILD_BASE" hidden="Yes"/>
+  <configuration Name="Rover" c_preprocessor_definitions="BUILD_ROVER" hidden="Yes"/>
+  <configuration Name="Test" c_preprocessor_definitions="BUILD_TEST" hidden="Yes"/>
+  <configuration Name="ARM" Platform="ARM" arm_instruction_set="ARM" arm_library_instruction_set="ARM" c_preprocessor_definitions="__ARM" hidden="Yes"/>
+  <configuration Name="Debug" build_debug_information="Yes" c_preprocessor_definitions="DEBUG" gcc_optimization_level="None" hidden="Yes" link_include_startup_code="No"/>
+  <configuration Name="Release" build_debug_information="Yes" c_preprocessor_definitions="NDEBUG" gcc_optimization_level="Level 3" hidden="Yes" link_include_startup_code="No"/>
+  <configuration Name="THUMB" Platform="ARM" arm_instruction_set="THUMB" arm_library_instruction_set="THUMB" c_preprocessor_definitions="__THUMB" hidden="Yes"/>
+  <configuration Name="NOR" arm_target_flash_loader_file_path="$(ProjectDir)/ARM Base Release/nor_loader.elf" arm_target_flash_loader_type="LIBMEM RPC Loader" arm_target_loader_can_erase_all="No" arm_target_loader_can_lock_all="No" arm_target_loader_can_lock_range="No" arm_target_loader_can_unlock_all="No" arm_target_loader_can_unlock_range="No" hidden="Yes" target_loader_reset_script="Reset()" target_reset_script="Reset()"/>
+  <project Name="nor_safety">
+    <configuration DebugHandler="Halt Mode" Name="Common" Placement="IRAM" Target="LPC3230" arm_architecture="v5TE" arm_core_type="ARM926EJ-S" arm_fp_abi="SoftFP" arm_fpu_type="VFP9" arm_linker_jtag_pad_post_dr="1" arm_linker_jtag_pad_post_ir="4" arm_simulator_memory_simulation_filename="$(TargetsDir)/LPC3200/LPC3200SimulatorMemory.dll" arm_simulator_memory_simulation_parameter="0x40000;$(EMC_DYCS0_SIZE::$(EMC_DYCS0_SIZE:0));$(EMC_DYCS1_SIZE::$(EMC_DYCS1_SIZE:0));$(EMC_CS0_SIZE::$(EMC_CS0_SIZE:0));$(EMC_CS1_SIZE::$(EMC_CS1_SIZE:0));$(EMC_CS2_SIZE::$(EMC_CS2_SIZE:0));$(EMC_CS3_SIZE::$(EMC_CS3_SIZE:0))" arm_target_debug_handler_load_address="_vectors+0x10" arm_target_debug_interface_type="ARM9TDI" arm_target_loader_applicable_loaders="NAND" arm_target_loader_default_loader="" arm_target_monitor_mode_debug="No" arm_target_monitor_mode_memory="No" arm_target_use_debug_handler="Yes" c_preprocessor_definitions="CTL_TASKING" c_user_include_directories="$(TargetsDir)/LPC3200;$(StudioDir)/ctl/include" debug_startup_completion_point="main" link_use_multi_threaded_libraries="Yes" linker_additional_files="$(StudioDir)/ctl/lib/libctl$(LibExt).a" linker_memory_map_file="$(TargetsDir)/LPC3200/LPC3230_MemoryMap.xml" linker_section_placement_file="$(TargetsDir)/LPC3200/iram_placement.xml" project_directory="" project_type="Executable" property_groups_file_path="$(TargetsDir)/LPC3200/propertyGroups.xml" target_reset_script="Reset()"/>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
+    </folder>
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/crt0.s"/>
+      <file file_name="$(StudioDir)/source/ARMDIDebugHandler.s">
+        <configuration Name="Common" c_preprocessor_definitions="__TARGET_HAS_MMU__"/>
+      </file>
+      <file file_name="$(TargetsDir)/LPC3200/LPC3200_target.js">
+        <configuration Name="Common" file_type="Reset Script"/>
+      </file>
+      <file file_name="$(TargetsDir)/LPC3200/LPC3200.c"/>
+      <file file_name="$(TargetsDir)/LPC3200/LPC3200_irq_handler.s"/>
+      <file file_name="$(StudioDir)/ctl/source/threads.js"/>
+      <file file_name="$(TargetsDir)/LPC3200/LPC3200_Startup.s"/>
+    </folder>
+  </project>
+  <project Name="nor_loader">
+    <configuration Name="Common" arm_architecture="v5TE" arm_core_type="ARM926EJ-S" arm_linker_fiq_stack_size="0" arm_linker_heap_size="0" arm_linker_irq_stack_size="0" arm_linker_jtag_pad_post_dr="2" arm_linker_jtag_pad_post_ir="8" arm_linker_jtag_pad_pre_dr="0" arm_linker_jtag_pad_pre_ir="0" arm_target_debug_interface_type="ARM9TDI" arm_target_flash_loader_type="LIBMEM RPC Loader" build_remove_unused_symbols="Yes" c_user_include_directories="$(TargetsDir)/LPC3200" gcc_entry_point="_start" link_include_startup_code="No" linker_additional_files="$(StudioDir)/lib/libmem_loader$(LibExt)$(LIB);$(StudioDir)/lib/libmem$(LibExt)$(LIB)" linker_keep_symbols="libmem_erase;libmem_erase_all;libmem_write;libmem_flush;libmem_read" project_directory="" project_type="Executable" property_groups_file_path="None" target_reset_script="Reset()"/>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
+      <file file_name="nor_loader.cpp"/>
+      <file file_name="$(TargetsDir)/LPC3200/Loader_Startup.s"/>
+      <file file_name="$(TargetsDir)/LPC3200/Loader_MemoryMap.xml"/>
+      <file file_name="nor_loader.js">
+        <configuration Name="Common" file_type="Reset Script"/>
+      </file>
+    </folder>
+    <configuration Name="ARM" arm_target_use_debug_handler="No"/>
+  </project>
+  <project Name="hw_check">
+    <configuration DebugHandler="None" Name="Common" Placement="IRAM" Target="LPC3230" arm_architecture="v5TE" arm_core_type="ARM926EJ-S" arm_fp_abi="SoftFP" arm_fpu_type="VFP9" arm_library_instruction_set="ARM" arm_linker_jtag_pad_post_dr="2" arm_linker_jtag_pad_post_ir="8" arm_simulator_memory_simulation_filename="$(TargetsDir)/LPC3200/LPC3200SimulatorMemory.dll" arm_simulator_memory_simulation_parameter="0x40000;$(EMC_DYCS0_SIZE::$(EMC_DYCS0_SIZE:0));$(EMC_DYCS1_SIZE::$(EMC_DYCS1_SIZE:0));$(EMC_CS0_SIZE::$(EMC_CS0_SIZE:0));$(EMC_CS1_SIZE::$(EMC_CS1_SIZE:0));$(EMC_CS2_SIZE::$(EMC_CS2_SIZE:0));$(EMC_CS3_SIZE::$(EMC_CS3_SIZE:0))" arm_target_debug_handler_load_address="_vectors+0x10" arm_target_debug_interface_type="ARM9TDI" arm_target_loader_applicable_loaders="" arm_target_loader_default_loader="" arm_target_monitor_mode_debug="No" arm_target_monitor_mode_memory="No" arm_target_use_debug_handler="No" c_preprocessor_definitions="CTL_TASKING" c_user_include_directories="$(TargetsDir)/LPC3200;$(StudioDir)/ctl/include" debug_startup_completion_point="main" gcc_entry_point="reset_handler" link_use_multi_threaded_libraries="Yes" linker_additional_files="$(StudioDir)/lib/libmem_loader$(LibExt)$(LIB);$(StudioDir)/lib/libmem$(LibExt)$(LIB)" linker_keep_symbols="_vectors;libmem_erase;libmem_erase_all;libmem_write;libmem_flush;libmem_read" linker_memory_map_file="$(TargetsDir)/LPC3200/LPC3230_MemoryMap.xml" linker_section_placement_file="$(TargetsDir)/LPC3200/iram_placement.xml" project_directory="" project_type="Executable" property_groups_file_path="$(TargetsDir)/LPC3200/propertyGroups.xml" target_reset_script="Reset()"/>
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc"/>
+      <file file_name="hw_check.c"/>
+      <file file_name="hw_check_handlers.s"/>
+    </folder>
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/crt0.s"/>
+      <file file_name="$(StudioDir)/source/ARMDIDebugHandler.s">
+        <configuration Name="Common" c_preprocessor_definitions="__TARGET_HAS_MMU__"/>
+      </file>
+      <file file_name="$(TargetsDir)/LPC3200/LPC3200_Startup.s">
+        <configuration Name="Common" c_preprocessor_definitions="NO_CACHE_ENABLE"/>
+      </file>
+      <file file_name="$(TargetsDir)/LPC3200/targets/LPC3230.h"/>
+      <file file_name="$(StudioDir)/ctl/source/threads.js"/>
+      <file file_name="orion_loader.js">
+        <configuration Name="Common" file_type="Reset Script"/>
+      </file>
+    </folder>
+  </project>
+</solution>

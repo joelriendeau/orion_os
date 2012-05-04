@@ -1,0 +1,69 @@
+<!DOCTYPE CrossStudio_Group_Values>
+<propertyGroups>
+  <group short="Target Processor" group="Build Options" long="Select a set of target options" name="Target" default="LPC3180" >
+    <groupEntry name="LPC3230" >
+      <property name="linker_memory_map_file" value="$(TargetsDir)/LPC3200/LPC3230_MemoryMap.xml"/>      
+      <property name="arm_architecture" value="v5TE"/>
+      <property name="arm_target_debug_interface_type" value="ARM9TDI"/>
+      <property name="arm_core_type" value="ARM926EJ-S"/> 
+      <property name="arm_fpu_type" value="VFP9"/>
+      <property name="arm_simulator_memory_simulation_parameter" value="0x40000;$(EMC_DYCS0_SIZE::$(EMC_DYCS0_SIZE:0));$(EMC_DYCS1_SIZE::$(EMC_DYCS1_SIZE:0));$(EMC_CS0_SIZE::$(EMC_CS0_SIZE:0));$(EMC_CS1_SIZE::$(EMC_CS1_SIZE:0));$(EMC_CS2_SIZE::$(EMC_CS2_SIZE:0));$(EMC_CS3_SIZE::$(EMC_CS3_SIZE:0))"/>        
+      <cdefine  name="__TARGET_PROCESSOR" value="LPC3230"/>          
+    </groupEntry>
+  </group>  
+  <group short="Section Placement" group="Build Options" long="Select a set of section placement options" name="Placement" default="InternalRAM">
+    <groupEntry name="InternalRAM">
+      <property name="linker_section_placement_file" value="$(ProjectDir)/internalram_placement.xml"/>
+      <property name="arm_target_loader_applicable_loaders" value="" />
+      <property name="arm_target_loader_default_loader" value=""/>
+      <cdefine name="NO_SRAM_VECTORS" value="1" />
+    </groupEntry>
+    <groupEntry name="DDR">
+      <property name="linker_section_placement_file" value="$(ProjectDir)/ddr_placement.xml" />
+      <property name="arm_target_loader_applicable_loaders" value=""/>
+      <property name="arm_target_loader_default_loader" value=""/>
+      <cdefine name="DDR_LOADER" value="1" />
+      <cdefine name="INITIALIZE_FAST_SECTIONS" value="1" />
+      <cdefine name="INITIALIZE_UNCACHED_SECTIONS" value="1" />
+    </groupEntry>
+    <groupEntry name="NORFlash">
+      <property name="linker_section_placement_file" value="$(ProjectDir)/nor_placement.xml"/>
+      <property name="arm_target_loader_applicable_loaders" value="NOR"/>
+      <property name="arm_target_loader_default_loader" value="NOR"/>
+      <cdefine name="__FLASH_BUILD" value="1" />
+      <cdefine name="__FLASH_WIDTH" value="2" />
+      <cdefine name="DDR_LOADER" value="1" />
+      <cdefine name="INITIALIZE_FAST_SECTIONS" value="1" />
+      <cdefine name="INITIALIZE_UNCACHED_SECTIONS" value="1" />
+    </groupEntry>
+  </group>
+  <group short="Debug Handler" group="Debugger Options" long="Select debug handler type" name="DebugHandler" default="Halt Mode" >
+    <groupEntry name="None" >
+      <property name="arm_target_use_debug_handler" value="No" />      
+      <property name="arm_target_monitor_mode_debug" value="No" />      
+      <property name="arm_target_monitor_mode_memory" value="No" />
+      <property name="arm_target_debug_handler_load_address" value="_vectors+0x10"/>
+      <cdefine name="NO_DBG_HANDLER" value="1" />      
+    </groupEntry>
+    <groupEntry name="Halt Mode" >
+      <property name="arm_target_use_debug_handler" value="Yes" />      
+      <property name="arm_target_monitor_mode_debug" value="No" />      
+      <property name="arm_target_monitor_mode_memory" value="No" />
+      <property name="arm_target_debug_handler_load_address" value="_vectors+0x10"/>      
+    </groupEntry>
+    <groupEntry name="Monitor Mode Memory" >
+      <property name="arm_target_use_debug_handler" value="Yes" />      
+      <property name="arm_target_monitor_mode_debug" value="No" />      
+      <property name="arm_target_monitor_mode_memory" value="Yes" />
+      <property name="arm_target_debug_handler_load_address" value="_vectors+0x10"/>      
+      <cdefine name="__MONITOR_MODE_DEBUG_HANDLER__" value="1" />
+    </groupEntry>
+    <groupEntry name="Monitor Mode" >
+      <property name="arm_target_use_debug_handler" value="Yes" />      
+      <property name="arm_target_monitor_mode_debug" value="Yes" /> 
+      <property name="arm_target_monitor_mode_memory" value="Yes" />
+      <property name="arm_target_debug_handler_load_address" value="_vectors+0x10"/>      
+      <cdefine name="__MONITOR_MODE_DEBUG_HANDLER__" value="1" />
+    </groupEntry>
+  </group>
+</propertyGroups>

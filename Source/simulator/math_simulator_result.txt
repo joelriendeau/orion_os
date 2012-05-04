@@ -1,0 +1,57 @@
+100000 iterations on each operations, optimized level 3
+
+DDR Placement
+Sample name          | Run Time | Counted | Switched | Interrupted | Average
+-----------------------------------------------------------------------------
+ math_mult_int       | 0.003042 |       1 |        0 |           0 | 0.003042
+ math_mult_float     | 0.003551 |       1 |        0 |           0 | 0.003551
+ math_mult_double    | 0.003551 |       1 |        0 |           0 | 0.003551
+ math_div_int        | 0.003038 |       1 |        0 |           0 | 0.003038
+ math_div_float      | 0.008599 |       1 |        0 |           0 | 0.008599
+ math_div_double     | 0.015695 |       1 |        0 |           0 | 0.015695
+ math_sqrt_float     | 0.028853 |       1 |        0 |           0 | 0.028853
+ math_sqrt_double    | 0.081823 |       1 |        0 |           0 | 0.081823
+ math_pow_float      | 1.221742 |       1 |        0 |           0 | 1.221742
+ math_pow_double     | 1.214741 |       1 |        0 |           0 | 1.214741
+
+Internal RAM Placement
+Sample name          | Run Time | Counted | Switched | Interrupted | Average
+-----------------------------------------------------------------------------
+ math_mult_int       | 0.003017 |       1 |        0 |           0 | 0.003017
+ math_mult_float     | 0.003520 |       1 |        0 |           0 | 0.003520
+ math_mult_double    | 0.003515 |       1 |        0 |           0 | 0.003515
+ math_div_int        | 0.003015 |       1 |        0 |           0 | 0.003015
+ math_div_float      | 0.008545 |       1 |        0 |           0 | 0.008545
+ math_div_double     | 0.015578 |       1 |        0 |           0 | 0.015578
+ math_sqrt_float     | 0.028637 |       1 |        0 |           0 | 0.028637
+ math_sqrt_double    | 0.056273 |       1 |        0 |           0 | 0.056273
+ math_pow_float      | 0.554723 |       1 |        0 |           0 | 0.554723
+ math_pow_double     | 0.545685 |       1 |        0 |           0 | 0.545685
+
+DDR Placement, cache enabled
+Sample name          | Run Time | Counted | Switched | Interrupted | Average
+-----------------------------------------------------------------------------
+ math_mult_int       | 0.003016 |       1 |        0 |           0 | 0.003016
+ math_mult_float     | 0.003512 |       1 |        0 |           0 | 0.003512
+ math_mult_double    | 0.003509 |       1 |        0 |           0 | 0.003509
+ math_div_int        | 0.003009 |       1 |        0 |           0 | 0.003009
+ math_div_float      | 0.008526 |       1 |        0 |           0 | 0.008526
+ math_div_double     | 0.015544 |       1 |        0 |           0 | 0.015544
+ math_sqrt_float     | 0.028579 |       1 |        0 |           0 | 0.028579
+ math_sqrt_double    | 0.043119 |       1 |        0 |           0 | 0.043119
+ math_pow_float      | 0.336950 |       1 |        0 |           0 | 0.336950
+ math_pow_double     | 0.329666 |       1 |        0 |           0 | 0.329666
+
+Internal RAM Placement, cache enabled
+Sample name          | Run Time | Counted | Switched | Interrupted | Average
+-----------------------------------------------------------------------------
+ math_mult_int       | 0.003010 |       1 |        0 |           0 | 0.003010
+ math_mult_float     | 0.003511 |       1 |        0 |           0 | 0.003511
+ math_mult_double    | 0.003508 |       1 |        0 |           0 | 0.003508
+ math_div_int        | 0.003008 |       1 |        0 |           0 | 0.003008
+ math_div_float      | 0.008524 |       1 |        0 |           0 | 0.008524
+ math_div_double     | 0.015540 |       1 |        0 |           0 | 0.015540
+ math_sqrt_float     | 0.028578 |       1 |        0 |           0 | 0.028578
+ math_sqrt_double    | 0.043113 |       1 |        0 |           0 | 0.043113
+ math_pow_float      | 0.336913 |       1 |        0 |           0 | 0.336913
+ math_pow_double     | 0.328888 |       1 |        0 |           0 | 0.328888

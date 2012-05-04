@@ -1,0 +1,25 @@
+January 13th, 2010
+bug fix
+ Trying to open file for writing "not_root/urami.txt" on a freshly formatted FAT32 SD card.
+ DFS_OpenDir tries to open "not_root". I fails to find it, but reports DFS_OK. I think this is because
+ the condition check at the end for "if (!dirinfo->currentcluster)" does not take into account FAT32,
+ for which the currentcluster number will be 2 at the root dir. this can corrupt the card. fixed by rewriting the condition as:
+ around line 545
+ if ((volinfo->filesystem == FAT32 && dirinfo->currentcluster == volinfo->rootdir) ||
+     (volinfo->filesystem != FAT32 && dirinfo->currentcluster == 0))
+
+bug fix
+ Trying to open file for writing "not_root/urami.txt" on a freshly formatted FAT32 SD card, with "not_root" dir created.
+ When we get to the "File create" point in DFS_OpenFile, DFS_GetFreeDirEnt is called to provide an empty dir entry.
+ However, DFS_GetFreeDirEnt calls DFS_GetNext with flag DFS_DI_BLANKENT enabled. DFS_GetNext does not increment dirinfo->currententry
+ before returning the empty directory entry. DFS_OpenFile assumes it is post-incremented though, so we are actually overwriting
+ a valid directory entry when creating the file. Fix :
+ around line 617
+ if (dirinfo->flags & DFS_DI_BLANKENT)
+ {
+     dirinfo->currententry++;
+     return DFS_OK;
+ }
+
+January 20th, 2010
+added directory creation capability to DFS_OpenDir using an input flag. all missing directories from a path tree are created in a loop.
